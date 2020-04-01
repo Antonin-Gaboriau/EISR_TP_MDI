@@ -5,10 +5,10 @@ import javax.swing.JLabel;
 public class CounterObserver extends JLabel implements Observer  
 {	
 	@Override
-	public void update(Subject mailbox) 
+	public void update(Subject subject) 
 	{
-		MailBox a = (MailBox) mailbox;
-		this.setText(a.getNbreMail().toString());
+		MailBox mailbox = (MailBox) subject;
+		this.setText(mailbox.getNbreMail().toString());
 	}
 	
 
