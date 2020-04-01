@@ -16,11 +16,19 @@ public class Main {
 		
 		JPanel p = new JPanel();
 		
-			
+		
 		f.add(p);
 		
+		
 		//TODO Register observer
-
+		MailObserver mail_observer = new MailObserver();
+		MailBox.getInstance().attach(mail_observer);
+		p.add(mail_observer);
+		
+		CounterObserver counter_observer = new CounterObserver();
+		MailBox.getInstance().attach(counter_observer);
+		p.add(counter_observer);
+		
 		f.setVisible(true);
 		f.dispose();
 		System.out.println("init");

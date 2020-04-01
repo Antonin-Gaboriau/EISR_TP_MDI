@@ -6,7 +6,8 @@ import java.util.List;
 
 
 
-public class MailBox {
+public class MailBox extends Subject
+{
 
 	
 	private MailBox(){
@@ -23,19 +24,26 @@ public class MailBox {
 	List<Mail> mail = new ArrayList<Mail>();
 	
 	
-	public void addMail(Mail m ){
-		
+	public void addMail(Mail m ) // newMessage
+	{
 		this.mail.add(m);
-		}
+		notifyObservers();
+	}
 
 
-	public Mail getLastMail() {
+	public Mail getLastMail() // read
+	{
 		return this.mail.get(mail.size()-1);
 	}
 
 
 	public Integer getNbreMail() {
 		return mail.size();
+	}
+	
+	public boolean isEmpty()
+	{
+		return mail.isEmpty();
 	}
 
 		
