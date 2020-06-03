@@ -30,88 +30,152 @@ import tp6.node.PStatement;
 
 public class Interpreter extends AbstractInterpreter implements Analysis {
 
+	private int counter = -1;
+	private boolean result;
+	
 	
 	@Override
-	public void caseAAssignment(AAssignment node) {
+	public void caseAAssignment(AAssignment node) 
+	{
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
+	}
+
+
+
+	@Override
+	public void caseABinexpression(ABinexpression node) 
+	{
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
+	}
+
+
+	@Override
+	public void caseABlock(ABlock node) 
+	{
+		counter++;
+		//System.out.println("Bloc de profondeur " + counter);
 		
+		for(PStatement statement : node.getStatement())
+		{
+			statement.apply(this);
+		}
+		counter--;
+	}
+
+
+
+
+	@Override
+	public void caseAConditional(AConditional node) 
+	{
+		System.out.println(node.getIf().toString() + node.getLPar() + node.getCond() + node.getRPar());
+        node.getThenpart().apply(this);
+        
+        if(node.getElsepart() != null)
+        {	System.out.println(node.getElse().toString());
+            node.getElsepart().apply(this);
+        }
+
+	}
+
+
+	@Override
+	public void caseAEqualOperatorlogique(AEqualOperatorlogique node) 
+	{
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
+	
+	}
+
+
+
+	@Override
+	public void caseAInfOperatorlogique(AInfOperatorlogique node) 
+	{
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
+	
+	}
+
+	@Override
+	public void caseAIntegervalue(AIntegervalue node) 
+	{
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
+	}
+
+
+
+	@Override
+	public void caseAMinusOperatorarith(AMinusOperatorarith node) 
+	{
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
+	
+	}
+
+	@Override
+	public void caseAMultiplierOperatorarith(AMultiplierOperatorarith node) 
+	{
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
+	}
+
+
+
+	@Override
+	public void caseAPlusOperatorarith(APlusOperatorarith node) 
+	{
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
+	}
+
+	@Override
+	public void caseAPrintS(APrintS node) 
+	{
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
 		
 	}
 
 
-
 	@Override
-	public void caseABinexpression(ABinexpression node) {
-		
-		
-	}
-
-
-	@Override
-	public void caseABlock(ABlock node) {
-
-	
-	}
-
-
-	
-
-	@Override
-	public void caseAConditional(AConditional node) {
-		
-	}
-
-
-	@Override
-	public void caseAEqualOperatorlogique(AEqualOperatorlogique node) {
-	
-	
-	}
-
-
-
-	@Override
-	public void caseAInfOperatorlogique(AInfOperatorlogique node) {
-
-	
-	}
-
-	@Override
-	public void caseAIntegervalue(AIntegervalue node) {
-	
-	
-	}
-
-
-
-	@Override
-	public void caseAMinusOperatorarith(AMinusOperatorarith node) {
-	
-	
-	}
-
-	@Override
-	public void caseAMultiplierOperatorarith(AMultiplierOperatorarith node) {
-		
-	}
-
-
-
-	@Override
-	public void caseAPlusOperatorarith(APlusOperatorarith node) {
-
-		
-	}
-
-	@Override
-	public void caseAPrintS(APrintS node) {
-
-		
-	}
-
-
-	@Override
-	public void caseAReadS(AReadS node) {
-
+	public void caseAReadS(AReadS node) 
+	{
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
 	
 	}
 
@@ -119,7 +183,11 @@ public class Interpreter extends AbstractInterpreter implements Analysis {
 
 	@Override
 	public void caseASupOperatorlogique(ASupOperatorlogique node) {
-
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
 	
 	}
 
@@ -127,27 +195,40 @@ public class Interpreter extends AbstractInterpreter implements Analysis {
 
 	@Override
 	public void caseAVariableref(AVariableref node) {
-
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
 	
 	}
 
 
 	@Override
-	public void caseAWhileS(AWhileS node) {
-
+	public void caseAWhileS(AWhileS node) 
+	{
+		node.getBody().apply(this);
 	
 	}
 
 
 	@Override
 	public void caseADiviserOperatorarith(ADiviserOperatorarith node) {
-
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
 	
 	}
 
 	@Override
 	public void caseAModuloOperatorarith(AModuloOperatorarith node) {
-
+		for(int i = 0 ; i<counter ; i++)
+		{
+			System.out.print("\t");
+		}
+		System.out.println(node);
 	
 	}
 

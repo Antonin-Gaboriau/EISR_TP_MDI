@@ -26,8 +26,12 @@ public class Main {
               Parser parser = new Parser(lexer);
 
               Start ast = parser.parse();
-
+              
+              System.out.println("Printer :");
               ast.apply(new Interpreter());
+              System.out.println(" ");
+              System.out.println("Evaluation :");
+              ast.apply(new Evaluator());
 
          }
          catch (Exception e) {
